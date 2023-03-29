@@ -1,8 +1,51 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import UserDataService from "../services/user.service"
 
-function SignUp () {
-  function handleSignUp() {}
+
+function SignUp() {
+
+  const initialUserState = {
+    id: null,
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: ""
+  };
+
+  const [user, setUser] = useState(initialUserState);
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleFormChange = event => {
+    const { name, value } = event.target;
+    setUser({ ...user, [name]: value });
+  };
+
+  function handleSignUp() {
+    let data = {
+      firstName: user.firstName,
+      lastName: user.lastName,
+      email: user.email,
+      password: user.password
+    }
+
+    UserDataService.create(data)
+      .then(response => {
+        setUser({
+          id: response.data.id,
+          firstName: response.data.firstName,
+          lastName: response.data.lastName,
+          email: response.data.email,
+          password: response.data.password
+        });
+        setSubmitted(true);
+        console.log(response.data);
+      })
+      .catch(e => {
+        console.log(e);
+      });
+
+  }
 
   return (
     <div className="Auth-form-container">
@@ -18,11 +61,23 @@ function SignUp () {
             </Link>
           </div>
           <div className="form-group mt-3">
-            <label>Full Name</label>
+            <label>First Name</label>
             <input
               type="text"
               className="form-control mt-1"
-              placeholder="e.g John Doe"
+              placeholder="John"
+              onChange={handleFormChange}
+              name="firstName"
+            />
+          </div>
+          <div className="form-group mt-3">
+            <label>Last Name</label>
+            <input
+              type="text"
+              className="form-control mt-1"
+              placeholder="Doe"
+              onChange={handleFormChange}
+              name="lastName"
             />
           </div>
           <div className="form-group mt-3">
@@ -31,6 +86,8 @@ function SignUp () {
               type="email"
               className="form-control mt-1"
               placeholder="johndoe@gmail.com"
+              onChange={handleFormChange}
+              name="email"
             />
           </div>
           <div className="form-group mt-3">
@@ -39,6 +96,8 @@ function SignUp () {
               type="password"
               className="form-control mt-1"
               placeholder="Enter password"
+              onChange={handleFormChange}
+              name="password"
             />
           </div>
           <div className="d-grid gap-2 mt-3">
