@@ -36,12 +36,30 @@ label {
   color: rgb(34, 34, 34);
 }
 
-/* Products page table styling */
-#productHeading {
+/* Products page heading style */
+#homeHead {
   text-align: center;
-  margin-top: 20px;
+  margin: 50px 0 20px;
+}
+/* Homepage main image styles */
+#homeMedImg {
+  margin-bottom: 40px;
 }
 
+/* Homepage offer image styles */
+.offerImg {
+  height: 70%;
+  width: 100%;
+}
+
+/* Products page heading styling */
+#productHeading {
+  text-align: center;
+  margin-top: 50px;
+}
+
+/* Products page table styling */
 #productTable {
   margin-top: 20px;
+  margin-bottom: 50px;
 }

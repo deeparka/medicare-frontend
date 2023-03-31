@@ -2,6 +2,7 @@ import { Button, Form } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import { TiShoppingCart } from "react-icons/ti";
 
 function NavBar() {
   return (
@@ -29,6 +30,16 @@ function NavBar() {
                 />
                 <Button variant="outline-primary">Search</Button>
               </Form>
+            </Nav>
+            <Nav>
+              <Nav.Link href="/cart">
+                <div style={{ display: "flex", alignItems: "center"}}>
+                  <TiShoppingCart
+                    style={{ marginLeft: "10px", height: 25, width: 30 }}
+                  />
+                  Cart
+                </div>
+              </Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

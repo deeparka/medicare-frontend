@@ -28,7 +28,8 @@ function SignUp() {
     };
 
     UserDataService.create(data)
-      .then((response) => {
+    .then((response) => {
+        setSubmitted(true);
         setUser({
           id: response.data.id,
           firstName: response.data.firstName,
@@ -36,7 +37,6 @@ function SignUp() {
           email: response.data.email,
           password: response.data.password,
         });
-        setSubmitted(true);
         console.log(response.data);
       })
       .catch((e) => {

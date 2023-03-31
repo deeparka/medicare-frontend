@@ -8,6 +8,7 @@ import {
   MDBRow,
   MDBBtn,
 } from "mdb-react-ui-kit";
+import { AiFillFacebook } from "react-icons/ai";
 
 export default function Footer() {
   return (
@@ -17,12 +18,13 @@ export default function Footer() {
           <MDBBtn
             outline
             color="light"
-            floating
+            // floating
             className="m-1"
             href="#!"
             role="button"
           >
-            <MDBIcon fab icon="facebook-f" />
+            {/* <MDBIcon fab icon="facebook-f" /> */}
+            <AiFillFacebook />
           </MDBBtn>
 
           <MDBBtn
