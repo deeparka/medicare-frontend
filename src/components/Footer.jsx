@@ -2,13 +2,11 @@ import React from "react";
 import {
   MDBFooter,
   MDBContainer,
-  MDBIcon,
-  MDBInput,
   MDBCol,
   MDBRow,
   MDBBtn,
 } from "mdb-react-ui-kit";
-import { AiFillFacebook } from "react-icons/ai";
+import { AiFillFacebook, AiFillTwitterCircle, AiFillGoogleCircle, AiFillLinkedin, AiOutlineInstagram } from "react-icons/ai";
 
 export default function Footer() {
   return (
@@ -18,12 +16,11 @@ export default function Footer() {
           <MDBBtn
             outline
             color="light"
-            // floating
+            floating
             className="m-1"
             href="#!"
             role="button"
           >
-            {/* <MDBIcon fab icon="facebook-f" /> */}
             <AiFillFacebook />
           </MDBBtn>
 
@@ -35,7 +32,7 @@ export default function Footer() {
             href="#!"
             role="button"
           >
-            <MDBIcon fab icon="twitter" />
+            <AiFillTwitterCircle />
           </MDBBtn>
 
           <MDBBtn
@@ -46,7 +43,7 @@ export default function Footer() {
             href="#!"
             role="button"
           >
-            <MDBIcon fab icon="google" />
+            <AiFillGoogleCircle />
           </MDBBtn>
 
           <MDBBtn
@@ -57,7 +54,7 @@ export default function Footer() {
             href="#!"
             role="button"
           >
-            <MDBIcon fab icon="instagram" />
+            <AiOutlineInstagram />
           </MDBBtn>
 
           <MDBBtn
@@ -68,18 +65,7 @@ export default function Footer() {
             href="#!"
             role="button"
           >
-            <MDBIcon fab icon="linkedin-in" />
-          </MDBBtn>
-
-          <MDBBtn
-            outline
-            color="light"
-            floating
-            className="m-1"
-            href="#!"
-            role="button"
-          >
-            <MDBIcon fab icon="github" />
+            <AiFillLinkedin />
           </MDBBtn>
         </section>
 
