@@ -5,12 +5,13 @@ import SignUp from "./components/SignUp";
 import NavBar from "./components/NavBar";
 import Contact from "./components/Contact";
 import Products from "./components/Products";
-import Dashboard from "./components/Dashboard";
+import Appointments from "./components/Appointments";
 import Manage from "./components/Manage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./components/Home";
 import Footer from "./components/Footer";
 import Cart from "./components/Cart";
+import Healthcaretest from "./components/Healthcaretest";
 
 function App() {
   return (
@@ -22,7 +23,8 @@ function App() {
           <Route exact path="/" element={<Home />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/manageproduct" element={<Manage />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/appointments" element={<Appointments />} />
+          <Route path="/healthcaretest" element={<Healthcaretest />} />
           <Route path="/products" element={<Products />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/cart" element={<Cart />} />

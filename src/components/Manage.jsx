@@ -73,7 +73,7 @@ function Manage() {
 
           <div className="form-group mt-3">
             <label>Category</label>
-            <select onChange={handleInputChange} className="form-control mt-1" name="category" id="category">
+            <select onChange={handleInputChange} className="form-select mt-1" name="category" id="category">
               <option value="#" selected>-------------  Select category  -------------</option>
               <option value="allopathic">Allopathic</option>
               <option value="ayurvedic">Ayurvedic</option>

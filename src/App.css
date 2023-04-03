@@ -63,3 +63,12 @@ label {
   margin-top: 20px;
   margin-bottom: 50px;
 }
+
+/* Health Care Test Buttons styles */
+#healthTestBtn {
+  margin: 20px 15px 0;
+}
+
+#healthTestBtnTwo {
+  margin: 15px;
+}
