@@ -1,8 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import UserDataService from "../services/user.service";
 
 function LogIn() {
-  function handleLogin() {}
+
+  const initialState = {
+    email: "",
+    password: ""
+  }
+
+  const [credentials, setCredentials] = useState(initialState);
+
+  function handleFormChange(event) {
+    const { name, value } = event.target;
+    setCredentials({ ...initialState, [name]: value })
+  }
+
+  function handleLogin(event) {
+    event.preventDefault();
+
+    // UserDataService.get(email).then((response) => {
+    //   console.log(response.data);
+    // });
+  }
 
   return (
     <div className="Auth-form-container">
@@ -23,6 +43,9 @@ function LogIn() {
               type="email"
               className="form-control mt-1"
               placeholder="johndoe@gmail.com"
+              required
+              onChange={handleFormChange}
+              name="email"
             />
           </div>
           <div className="form-group mt-3">
@@ -31,6 +54,9 @@ function LogIn() {
               type="password"
               className="form-control mt-1"
               placeholder="Enter password"
+              required
+              onChange={handleFormChange}
+              name="password"
             />
           </div>
           <div className="d-grid gap-2 mt-3">
@@ -38,9 +64,6 @@ function LogIn() {
               Log in
             </button>
           </div>
-          <p className="forgot-password text-center mt-2">
-            Forgot <a href="#">password?</a>
-          </p>
         </div>
       </form>
     </div>

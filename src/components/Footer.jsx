@@ -4,70 +4,15 @@ import {
   MDBContainer,
   MDBCol,
   MDBRow,
-  MDBBtn,
 } from "mdb-react-ui-kit";
-import { AiFillFacebook, AiFillTwitterCircle, AiFillGoogleCircle, AiFillLinkedin, AiOutlineInstagram } from "react-icons/ai";
 
 export default function Footer() {
   return (
     <MDBFooter className="text-center" color="white" bgColor="dark">
       <MDBContainer className="p-4">
-        <section className="mb-4">
-          <MDBBtn
-            outline
-            color="light"
-            floating
-            className="m-1"
-            href="#!"
-            role="button"
-          >
-            <AiFillFacebook />
-          </MDBBtn>
-
-          <MDBBtn
-            outline
-            color="light"
-            floating
-            className="m-1"
-            href="#!"
-            role="button"
-          >
-            <AiFillTwitterCircle />
-          </MDBBtn>
-
-          <MDBBtn
-            outline
-            color="light"
-            floating
-            className="m-1"
-            href="#!"
-            role="button"
-          >
-            <AiFillGoogleCircle />
-          </MDBBtn>
-
-          <MDBBtn
-            outline
-            color="light"
-            floating
-            className="m-1"
-            href="#!"
-            role="button"
-          >
-            <AiOutlineInstagram />
-          </MDBBtn>
-
-          <MDBBtn
-            outline
-            color="light"
-            floating
-            className="m-1"
-            href="#!"
-            role="button"
-          >
-            <AiFillLinkedin />
-          </MDBBtn>
-        </section>
+        <h2 className="mb-4">
+          MediCare - The Medicine Application
+        </h2>
 
         <section className="mb-4">
           <p>
@@ -78,114 +23,45 @@ export default function Footer() {
           </p>
         </section>
 
-        <section className="">
-          <MDBRow>
-            <MDBCol lg="3" md="6" className="mb-4 mb-md-0">
-              <h5 className="text-uppercase">Links</h5>
+        <section>
+          <MDBRow className="text-center">
+            <MDBCol lg="4" md="6" className="mb-4 mb-md-0">
+              <h3>Contacts</h3>
+
+              <p className="text-white">+91-9876543201</p>
+              <p className="text-white">medicare3@yahoo.com</p>
+            </MDBCol>
+
+            <MDBCol lg="4" md="6" className="mb-4 mb-md-0">
+              <h3>Get in touch</h3>
 
               <ul className="list-unstyled mb-0">
                 <li>
                   <a href="#!" className="text-white">
-                    Link 1
+                    LinkedIn
                   </a>
                 </li>
                 <li>
                   <a href="#!" className="text-white">
-                    Link 2
+                    Facebook
                   </a>
                 </li>
                 <li>
                   <a href="#!" className="text-white">
-                    Link 3
+                    Instagram
                   </a>
                 </li>
                 <li>
                   <a href="#!" className="text-white">
-                    Link 4
+                    Medium
                   </a>
                 </li>
               </ul>
             </MDBCol>
 
-            <MDBCol lg="3" md="6" className="mb-4 mb-md-0">
-              <h5 className="text-uppercase">Links</h5>
-
-              <ul className="list-unstyled mb-0">
-                <li>
-                  <a href="#!" className="text-white">
-                    Link 1
-                  </a>
-                </li>
-                <li>
-                  <a href="#!" className="text-white">
-                    Link 2
-                  </a>
-                </li>
-                <li>
-                  <a href="#!" className="text-white">
-                    Link 3
-                  </a>
-                </li>
-                <li>
-                  <a href="#!" className="text-white">
-                    Link 4
-                  </a>
-                </li>
-              </ul>
-            </MDBCol>
-
-            <MDBCol lg="3" md="6" className="mb-4 mb-md-0">
-              <h5 className="text-uppercase">Links</h5>
-
-              <ul className="list-unstyled mb-0">
-                <li>
-                  <a href="#!" className="text-white">
-                    Link 1
-                  </a>
-                </li>
-                <li>
-                  <a href="#!" className="text-white">
-                    Link 2
-                  </a>
-                </li>
-                <li>
-                  <a href="#!" className="text-white">
-                    Link 3
-                  </a>
-                </li>
-                <li>
-                  <a href="#!" className="text-white">
-                    Link 4
-                  </a>
-                </li>
-              </ul>
-            </MDBCol>
-
-            <MDBCol lg="3" md="6" className="mb-4 mb-md-0">
-              <h5 className="text-uppercase">Links</h5>
-
-              <ul className="list-unstyled mb-0">
-                <li>
-                  <a href="#!" className="text-white">
-                    Link 1
-                  </a>
-                </li>
-                <li>
-                  <a href="#!" className="text-white">
-                    Link 2
-                  </a>
-                </li>
-                <li>
-                  <a href="#!" className="text-white">
-                    Link 3
-                  </a>
-                </li>
-                <li>
-                  <a href="#!" className="text-white">
-                    Link 4
-                  </a>
-                </li>
-              </ul>
+            <MDBCol lg="4" md="6" className="mb-4 mb-md-0">
+              <h3>Address</h3>
+              <p>Pune, Maharashtra, India</p>
             </MDBCol>
           </MDBRow>
         </section>

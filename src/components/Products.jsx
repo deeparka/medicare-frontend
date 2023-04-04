@@ -1,12 +1,18 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Button, Container, Modal, Table } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import MedicineDataService from "../services/medicine.service";
+import AppContext from "../context/AppContext";
 
 function Products() {
   const navigate = useNavigate();
 
+  const useValue = useContext(AppContext);
+
+  let ids = [];
+
   const [show, setShow] = useState(false);
+  // const [showError, setShowError] = useState(false);
   const [medicines, setMedicines] = useState([]);
 
   MedicineDataService.getAll().then((response) => {
@@ -14,11 +20,42 @@ function Products() {
     // console.log(response.data);
   });
 
-  const handleAddToCart = () => {
-    setShow(true);
-  }
+  const handleAddToCart = (med) => {
+    
+    if (useValue.cartItems.length === 0) {
+      useValue.cartItems.push(med);
+      ids.push(med.id);
+      setShow(true);
+    }
+
+    console.log(ids.includes(med.id))
+
+    if(ids.includes(med.id)) {
+      // setShowError(true);
+      console.log("already in cart")
+    } else {
+      useValue.cartItems.push(med);
+      ids.push(med.id);
+      setShow(true);
+    }
+
+    console.log(useValue.cartItems);
+  };
 
   const handleClose = () => setShow(false);
+
+  // const handleCloseError = () => setShowError(false);
+
+  const handleEdit = (id, name, category, price) => {
+    navigate("/updateproduct", {
+      state: {
+        medId: id,
+        medName: name,
+        medCategory: category,
+        medPrice: price,
+      },
+    });
+  };
 
   return (
     <Container>
@@ -50,16 +87,24 @@ function Products() {
               <td>{index + 1}</td>
               <td>{med.name}</td>
               <td>{med.category}</td>
-              <td>{med.price}</td>
+              <td>₹{med.price}</td>
               <td>
-                <Button className="btn-primary" onClick={handleAddToCart}>
+                <Button
+                  className="btn-primary"
+                  onClick={() => handleAddToCart(med)}
+                >
                   Add to cart
                 </Button>
               </td>
               <td>
-                <Link to="/manageproduct">
-                  <Button className="btn-secondary">Edit</Button>
-                </Link>
+                <Button
+                  className="btn-secondary"
+                  onClick={() =>
+                    handleEdit(med.id, med.name, med.category, med.price)
+                  }
+                >
+                  Edit
+                </Button>
               </td>
             </tr>
           ))}
@@ -69,9 +114,9 @@ function Products() {
       {/* If add to cart is clicked then this modal will pop-up */}
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Added to cart</Modal.Title>
+          <Modal.Title>Woohoo...🎉</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Woohoo! product added to the cart</Modal.Body>
+        <Modal.Body>product added to the cart</Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
@@ -82,6 +127,18 @@ function Products() {
         </Modal.Footer>
       </Modal>
 
+      {/* If add to cart is clicked then this modal will pop-up */}
+      {/* <Modal show={showError} onHide={handleCloseError}>
+        <Modal.Header closeButton>
+          <Modal.Title>Error...😢</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Please purchase another product or go to Cart</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloseError}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal> */}
     </Container>
   );
 }

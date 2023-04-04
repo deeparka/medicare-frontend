@@ -7,8 +7,10 @@ function SignUp() {
     id: null,
     firstName: "",
     lastName: "",
+    phone: "",
     email: "",
     password: "",
+    userType: "user"
   };
 
   const [user, setUser] = useState(initialUserState);
@@ -19,12 +21,15 @@ function SignUp() {
     setUser({ ...user, [name]: value });
   };
 
-  function handleSignUp() {
+  function handleSignUp(event) {
+    event.preventDefault();
     let data = {
       firstName: user.firstName,
       lastName: user.lastName,
+      phone: user.phone,
       email: user.email,
       password: user.password,
+      userType: "user"
     };
 
     UserDataService.create(data)
@@ -34,6 +39,7 @@ function SignUp() {
           id: response.data.id,
           firstName: response.data.firstName,
           lastName: response.data.lastName,
+          phone: response.data.phone,
           email: response.data.email,
           password: response.data.password,
         });
@@ -49,7 +55,7 @@ function SignUp() {
       {submitted ? (
         <div>
           <h2>You have successfully registered</h2>
-          <h4>
+          <h4 style={{ textAlign: "center" }}>
             Now <Link to="/login">Log in</Link>
           </h4>
         </div>
@@ -83,6 +89,16 @@ function SignUp() {
                 placeholder="Doe"
                 onChange={handleFormChange}
                 name="lastName"
+              />
+            </div>
+            <div className="form-group mt-3">
+              <label>Phone Number</label>
+              <input
+                type="number"
+                className="form-control mt-1"
+                placeholder="Phone Number"
+                onChange={handleFormChange}
+                name="phone"
               />
             </div>
             <div className="form-group mt-3">
