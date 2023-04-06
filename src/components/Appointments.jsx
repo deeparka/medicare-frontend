@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Col, Container, Row, Modal, Button } from "react-bootstrap";
-import medimg2 from "../images/medicare10.jpg";
+import medimg from "../images/medicare-appointment.jpg";
 import AppointmentsDataService from "../services/appointments.service";
 import { useNavigate } from "react-router-dom";
 
@@ -39,7 +39,7 @@ function Appointments() {
         {appointments.map((apt) => (
           <Col>
             <div class="card" style={{ width: "20rem" }} key={apt.id}>
-              <img src={medimg2} class="card-img-top" alt="..." />
+              <img src={medimg} class="card-img-top" alt="..." />
               <div class="card-body">
                 <h5 class="card-title">{apt.category}</h5>
                 <p className="card-text">{apt.availability}</p>
