@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Button, Container, Modal, Table } from "react-bootstrap";
+import { Button, Container, Table } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import MedicineDataService from "../services/medicine.service";
 import AppContext from "../context/AppContext";
@@ -16,7 +16,6 @@ function Products() {
     navigate("/login");
   }
 
-  const [show, setShow] = useState(false);
   const [medicines, setMedicines] = useState([]);
 
   MedicineDataService.getAll().then((response) => {
@@ -25,12 +24,16 @@ function Products() {
   });
 
   const handleAddToCart = (med) => {
-    useValue.addItemsToCart(med);
 
-    console.log(useValue.cartItems);
+    if (useValue.cartItems.some(item => item.id === med.id)) {
+      alert("Already added to cart");
+    } else {
+      useValue.addItemsToCart(med);
+      alert("Added to cart")
+    }
+
+    // console.log(useValue.cartItems);
   };
-
-  const handleClose = () => setShow(false);
 
   const handleEdit = ({ id, name, category, price }) => {
     navigate("/updateproduct", {
@@ -98,35 +101,6 @@ function Products() {
           ))}
         </tbody>
       </Table>
-
-      {/* If add to cart is clicked then this modal will pop-up */}
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Woohoo...🎉</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>product added to the cart</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Continue Shopping
-          </Button>
-        </Modal.Footer>
-      </Modal>
-
-      {/* If add to cart is clicked then this modal will pop-up */}
-      {/* <Modal show={showError} onHide={handleCloseError}>
-        <Modal.Header closeButton>
-          <Modal.Title>Error...😢</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Please purchase another product or go to Cart</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleCloseError}>
-            Close
-          </Button>
-        </Modal.Footer>
-      </Modal> */}
     </Container>
   );
 }
