@@ -19,7 +19,7 @@ function Home() {
 
   return (
     <div>
-      <Container>
+      <Container style={{ marginTop: "90px" }}>
         <Row>
           <h1 id="homeHead">We Provide High Solutions for Your Health</h1>
           <img src={med} alt="" id="homeMedImg" />
@@ -56,7 +56,9 @@ function Home() {
           </Col>
         </Row>
         <Row>
-          <h2 style={{ marginBottom: "20px", textAlign: "center" }}>Mobile App coming soon...</h2>
+          <h2 style={{ marginBottom: "20px", textAlign: "center" }}>
+            Mobile App coming soon...
+          </h2>
         </Row>
       </Container>
     </div>

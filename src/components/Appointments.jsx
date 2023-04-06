@@ -31,7 +31,7 @@ function Appointments() {
   const handleClose = () => setShow(false);
 
   return (
-    <Container style={{ marginTop: "30px", marginBottom: "30px" }}>
+    <Container style={{ marginTop: "90px", marginBottom: "30px" }}>
       <h1 style={{ textAlign: "center", marginBottom: "25px" }}>
         Appointments available
       </h1>

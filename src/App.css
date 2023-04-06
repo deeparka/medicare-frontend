@@ -5,6 +5,8 @@
   align-items: center;
   width: 100vw;
   height: 100vh;
+  margin-top: 90px;
+  margin-bottom: 50px;
 }
 
 .Auth-form {
@@ -61,7 +63,13 @@ label {
 /* Products page table styling */
 #productTable {
   margin-top: 20px;
-  margin-bottom: 50px;
+  margin-bottom: 10px;
+}
+
+#productTableHeads {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 /* Health Care Test Buttons styles */

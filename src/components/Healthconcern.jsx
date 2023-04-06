@@ -13,7 +13,7 @@ const Healthconcern = () => {
   const token = sessionStorage.getItem("token");
 
   if (!token) {
-    // Redirect to the login page or home page
+    // Redirect to the login page
     navigate("/login");
   }
 
@@ -26,7 +26,7 @@ const Healthconcern = () => {
   };
 
   return (
-    <Container style={{ marginTop: "30px", marginBottom: "30px" }}>
+    <Container style={{ marginTop: "90px", marginBottom: "30px" }}>
       <h1 style={{ textAlign: "center", marginBottom: "25px" }}>
         Health Concerns
       </h1>

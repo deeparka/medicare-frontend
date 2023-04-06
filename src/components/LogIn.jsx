@@ -6,6 +6,9 @@ import AppContext from "../context/AppContext";
 function LogIn() {
   const useValue = useContext(AppContext);
 
+  const [firstName, setFirstName] = useState("")
+  const [lastName, setLastName] = useState("")
+
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState(false);
 
@@ -25,9 +28,12 @@ function LogIn() {
 
   function handleFormChange(event) {
     UserDataService.get(credentials.email).then((response) => {
-      console.log(response.data);
+      // console.log(response.data);
 
       setUserType(response.data.userType);
+
+      setFirstName(response.data.firstName);
+      setLastName(response.data.lastName);
 
       setEmail(response.data.email);
       setPassword(response.data.password);
@@ -35,7 +41,7 @@ function LogIn() {
 
     const { name, value } = event.target;
     setCredentials({ ...credentials, [name]: value });
-    console.log(credentials);
+    // console.log(credentials);
   }
 
   function handleLogin(event) {
@@ -66,9 +72,10 @@ function LogIn() {
     <div className="Auth-form-container">
       {submitted ? (
         <div>
-          <h2>Log in successful</h2>
+          <h2 style={{ textAlign: "center" }}>Log in successful</h2>
+          <h3 style={{ textAlign: "center" }}>Welcome {firstName} {lastName}</h3>
           <h4 style={{ textAlign: "center" }}>
-            <Link to="/">Homepage</Link>
+            Go to <Link to="/">Homepage</Link>
           </h4>
         </div>
       ) : (

@@ -7,7 +7,7 @@ const Addproduct = () => {
     id: null,
     name: "",
     category: "",
-    price: "",
+    price: 0,
   };
 
   const navigate = useNavigate();
@@ -27,7 +27,8 @@ const Addproduct = () => {
     setMedicine({ ...medicine, [name]: value });
   };
 
-  function handleMedicineSubmit() {
+  function handleMedicineSubmit(event) {
+    event.preventDefault();
     let data = {
       name: medicine.name,
       category: medicine.category,
@@ -43,7 +44,7 @@ const Addproduct = () => {
           price: response.data.price,
         });
         setSubmitted(true);
-        console.log(response.data);
+        // console.log(response.data);
       })
       .catch((e) => {
         console.log(e);
@@ -99,8 +100,8 @@ const Addproduct = () => {
                 <option value="#" selected>
                   ------------- Select category -------------
                 </option>
-                <option value="allopathic">Allopathic</option>
-                <option value="ayurvedic">Ayurvedic</option>
+                <option value="Allopathic">Allopathic</option>
+                <option value="Ayurvedic">Ayurvedic</option>
                 <option value="Homeopathic">Homeopathic</option>
               </select>
             </div>

@@ -49,7 +49,7 @@ const Updateproduct = () => {
           price: response.data.price,
         });
         setSubmitted(true);
-        console.log(response.data);
+        // console.log(response.data);
       })
       .catch((e) => {
         console.log(e);

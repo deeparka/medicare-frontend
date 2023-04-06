@@ -4,6 +4,8 @@ import AppContext from "./AppContext";
 function AppProvider({ children }) {
   let [cartItems, setCartItems] = useState([]);
 
+  const [totalPrice, setTotalPrice] = useState(0);
+
   const [userType, setUserType] = useState("");
 
   function addItemsToCart(item) {
@@ -15,6 +17,11 @@ function AppProvider({ children }) {
     setCartItems((prevCartItems) => {
       return prevCartItems.filter((prevItem) => prevItem.id !== item.id);
     });
+  }
+
+  function calculateTotalPrice(price) {
+    let newPrice = totalPrice + price;
+    setTotalPrice(newPrice);
   }
 
   function defineUserType(user) {
@@ -33,6 +40,8 @@ function AppProvider({ children }) {
         cartItems,
         addItemsToCart,
         removeItemsFromCart,
+        totalPrice,
+        calculateTotalPrice,
         userType,
         defineUserType,
         logOut

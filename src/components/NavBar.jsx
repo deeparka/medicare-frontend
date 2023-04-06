@@ -20,7 +20,7 @@ function NavBar() {
 
   return (
     <>
-      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" fixed="top" >
         <Container>
           <Navbar.Brand>MediCare</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -41,6 +41,10 @@ function NavBar() {
               >
                 <Link to="/appointments" className="nav-dropdown-links">
                   Appointments
+                </Link>
+
+                <Link to="/healthcaretest" className="nav-dropdown-links">
+                  Check up
                 </Link>
 
                 <Link to="/wellness" className="nav-dropdown-links">
