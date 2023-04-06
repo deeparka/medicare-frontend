@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import UserDataService from "../services/user.service";
+import { useEffect } from "react";
 
 function SignUp() {
   const initialUserState = {
@@ -10,15 +11,31 @@ function SignUp() {
     phone: "",
     email: "",
     password: "",
-    userType: "user"
+    userType: "user",
   };
 
+  const [allUsers, setAllUsers] = useState([]);
   const [user, setUser] = useState(initialUserState);
   const [submitted, setSubmitted] = useState(false);
 
+  const [emailError, setEmailError] = useState(false);
+
+  useEffect(() => {
+    UserDataService.getAll().then((response) => {
+      setAllUsers(response.data);
+    });
+  }, []);
+
   const handleFormChange = (event) => {
+    allUsers.map((singleUser) => {
+      if (singleUser.email === user.email) {
+        setEmailError(true);
+      }
+    });
+
     const { name, value } = event.target;
     setUser({ ...user, [name]: value });
+    console.log(user);
   };
 
   function handleSignUp(event) {
@@ -29,11 +46,11 @@ function SignUp() {
       phone: user.phone,
       email: user.email,
       password: user.password,
-      userType: "user"
+      userType: "user",
     };
 
     UserDataService.create(data)
-    .then((response) => {
+      .then((response) => {
         setSubmitted(true);
         setUser({
           id: response.data.id,
@@ -43,7 +60,7 @@ function SignUp() {
           email: response.data.email,
           password: response.data.password,
         });
-        console.log(response.data);
+        // console.log(response.data);
       })
       .catch((e) => {
         console.log(e);
@@ -79,6 +96,7 @@ function SignUp() {
                 placeholder="John"
                 onChange={handleFormChange}
                 name="firstName"
+                required
               />
             </div>
             <div className="form-group mt-3">
@@ -89,6 +107,7 @@ function SignUp() {
                 placeholder="Doe"
                 onChange={handleFormChange}
                 name="lastName"
+                required
               />
             </div>
             <div className="form-group mt-3">
@@ -99,6 +118,7 @@ function SignUp() {
                 placeholder="Phone Number"
                 onChange={handleFormChange}
                 name="phone"
+                required
               />
             </div>
             <div className="form-group mt-3">
@@ -109,8 +129,12 @@ function SignUp() {
                 placeholder="johndoe@gmail.com"
                 onChange={handleFormChange}
                 name="email"
+                required
               />
             </div>
+            {emailError && (
+              <p style={{ color: "red" }}>*Email already exists</p>
+            )}
             <div className="form-group mt-3">
               <label>Password</label>
               <input
@@ -119,12 +143,20 @@ function SignUp() {
                 placeholder="Enter password"
                 onChange={handleFormChange}
                 name="password"
+                required
               />
             </div>
             <div className="d-grid gap-2 mt-3">
-              <button type="submit" className="btn btn-primary">
-                Sign Up
-              </button>
+              {!emailError && (
+                <button type="submit" className="btn btn-primary">
+                  Sign Up
+                </button>
+              )}
+              {emailError && (
+                <button disabled type="submit" className="btn btn-primary">
+                  Sign Up
+                </button>
+              )}
             </div>
           </div>
         </form>

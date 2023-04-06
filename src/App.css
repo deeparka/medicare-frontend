@@ -36,7 +36,7 @@ label {
   color: rgb(34, 34, 34);
 }
 
-/* Products page heading style */
+/* Homepage heading style */
 #homeHead {
   text-align: center;
   margin: 50px 0 20px;
@@ -71,4 +71,41 @@ label {
 
 #healthTestBtnTwo {
   margin: 15px;
+}
+
+/* Navbar Links styles */
+/* Navbar Home, Products, Contact Us, Add Product styles */
+.nav-links {
+  margin: 14px 10px 0;
+  color: white;
+  text-decoration: none;
+}
+
+/* Navbar Health dropdown styles */
+.nav-links-dropdown {
+  margin-top: 6px;
+}
+
+/* Navbar Health dropdown elements styles */
+.nav-dropdown-links {
+  display: block;
+  color: black;
+  text-decoration: none;
+  margin: 5px 0 0 15px;
+}
+
+/* Navbar SignUp, LogIn, Cart styles */
+.nav-links-right {
+  margin: 0px 10px 0;
+  color: white;
+  text-decoration: none;
+}
+
+/* Cart Page styles */
+/* No items in the cart styles */
+#cart-no-item-heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }

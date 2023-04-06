@@ -10,6 +10,13 @@ import { useNavigate } from "react-router-dom";
 const Healthconcern = () => {
   const navigate = useNavigate();
 
+  const token = sessionStorage.getItem("token");
+
+  if (!token) {
+    // Redirect to the login page or home page
+    navigate("/login");
+  }
+
   const handleCares = (name) => {
     navigate("/cares", {
       state: {

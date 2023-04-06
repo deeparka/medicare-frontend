@@ -9,10 +9,14 @@ function Products() {
 
   const useValue = useContext(AppContext);
 
-  let ids = [];
+  const token = sessionStorage.getItem("token");
+
+  if (!token) {
+    // Redirect to the login page
+    navigate("/login");
+  }
 
   const [show, setShow] = useState(false);
-  // const [showError, setShowError] = useState(false);
   const [medicines, setMedicines] = useState([]);
 
   MedicineDataService.getAll().then((response) => {
@@ -21,32 +25,14 @@ function Products() {
   });
 
   const handleAddToCart = (med) => {
-    
-    if (useValue.cartItems.length === 0) {
-      useValue.cartItems.push(med);
-      ids.push(med.id);
-      setShow(true);
-    }
-
-    console.log(ids.includes(med.id))
-
-    if(ids.includes(med.id)) {
-      // setShowError(true);
-      console.log("already in cart")
-    } else {
-      useValue.cartItems.push(med);
-      ids.push(med.id);
-      setShow(true);
-    }
+    useValue.addItemsToCart(med);
 
     console.log(useValue.cartItems);
   };
 
   const handleClose = () => setShow(false);
 
-  // const handleCloseError = () => setShowError(false);
-
-  const handleEdit = (id, name, category, price) => {
+  const handleEdit = ({ id, name, category, price }) => {
     navigate("/updateproduct", {
       state: {
         medId: id,
@@ -74,14 +60,6 @@ function Products() {
           </tr>
         </thead>
         <tbody>
-          {/* <tr>
-                <td>1</td>
-                <td>Paracetomol</td>
-                <td>Allopathic</td>
-                <td>25$</td>
-                <td>Add to cart</td>
-                <td>edit btn</td>
-                </tr> */}
           {medicines.map((med, index) => (
             <tr key={index}>
               <td>{index + 1}</td>
@@ -91,20 +69,30 @@ function Products() {
               <td>
                 <Button
                   className="btn-primary"
-                  onClick={() => handleAddToCart(med)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleAddToCart(med);
+                  }}
                 >
                   Add to cart
                 </Button>
               </td>
               <td>
-                <Button
-                  className="btn-secondary"
-                  onClick={() =>
-                    handleEdit(med.id, med.name, med.category, med.price)
-                  }
-                >
-                  Edit
-                </Button>
+                {useValue.userType === "user" ? (
+                  <Button className="btn-secondary" disabled>
+                    Edit
+                  </Button>
+                ) : (
+                  <Button
+                    className="btn-secondary"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleEdit(med);
+                    }}
+                  >
+                    Edit
+                  </Button>
+                )}
               </td>
             </tr>
           ))}

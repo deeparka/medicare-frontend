@@ -1,11 +1,8 @@
 import React from "react";
 
 const Healthcaretest = () => {
+  const handleScheduleTest = () => {};
 
-    const handleScheduleTest = () => {
-
-    }
-    
   return (
     <div className="Auth-form-container">
       <form className="Auth-form" onSubmit={handleScheduleTest}>

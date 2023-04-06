@@ -1,10 +1,23 @@
-import { Button, Form, NavDropdown } from "react-bootstrap";
+import { useContext } from "react";
+import { NavDropdown } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { TiShoppingCart } from "react-icons/ti";
+import AppContext from "../context/AppContext";
+import { Link, useNavigate } from "react-router-dom";
 
 function NavBar() {
+  const navigate = useNavigate();
+  const getValue = useContext(AppContext);
+
+  const handleLogout = () => {
+    getValue.logOut();
+    sessionStorage.removeItem("token");
+    // Redirect to the login page or home page
+    navigate("/login");
+  };
+
   return (
     <>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -13,47 +26,72 @@ function NavBar() {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href="/products">Products</Nav.Link>
-              <NavDropdown title="Health" id="basic-nav-dropdown">
-                <NavDropdown.Item href="/appointments">
+              <Link to="/" className="nav-links">
+                <p>Home</p>
+              </Link>
+
+              <Link to="/products" className="nav-links">
+                <p>Products</p>
+              </Link>
+
+              <NavDropdown
+                title="Health"
+                id="basic-nav-dropdown"
+                className="nav-links-dropdown"
+              >
+                <Link to="/appointments" className="nav-dropdown-links">
                   Appointments
-                </NavDropdown.Item>
-                <NavDropdown.Item href="/wellness">
+                </Link>
+
+                <Link to="/wellness" className="nav-dropdown-links">
                   Wellness
-                </NavDropdown.Item>
-                <NavDropdown.Item href="/healthconcern">
+                </Link>
+
+                <Link to="/healthconcern" className="nav-dropdown-links">
                   Health Concerns
-                </NavDropdown.Item>
+                </Link>
               </NavDropdown>
-              <Nav.Link href="/contact">Contact Us</Nav.Link>
-              <Nav.Link href="/addproduct">Add Product</Nav.Link>
+
+              <Link to="/contact" className="nav-links">
+                Contact Us
+              </Link>
+
+              {getValue.userType === "admin" ? (
+                <Link to="/addproduct" className="nav-links">
+                  Add Product
+                </Link>
+              ) : null}
             </Nav>
 
             <Nav>
-              <Form className="d-flex">
-                <Form.Control
-                  type="search"
-                  placeholder="Search"
-                  className="me-2"
-                  aria-label="Search"
-                />
-                <Button variant="outline-primary">Search</Button>
-              </Form>
+              <Link to="/signup" className="nav-links-right">
+                Sign Up
+              </Link>
             </Nav>
+
             <Nav>
-              <Nav.Link href="signup">Sign Up</Nav.Link>
+              {getValue.userType === "" || getValue.userType === undefined ? (
+                <Link to="/login" className="nav-links-right">
+                  Log In
+                </Link>
+              ) : (
+                <p
+                  className="nav-links-right text-light"
+                  onClick={handleLogout}
+                  style={{ cursor: "pointer" }}
+                >
+                  Log Out
+                </p>
+              )}
             </Nav>
+
             <Nav>
-              <Nav.Link href="/login">Log In</Nav.Link>
-            </Nav>
-            <Nav>
-              <Nav.Link href="/cart">
+              <Link to="/cart" className="nav-links-right">
                 <div style={{ display: "flex", alignItems: "center" }}>
                   <TiShoppingCart style={{ height: 25, width: 30 }} />
                   Cart
                 </div>
-              </Nav.Link>
+              </Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

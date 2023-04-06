@@ -5,8 +5,18 @@ import offer1 from "../images/offer1.jpg";
 import offer2 from "../images/offer2.jpg";
 import offer3 from "../images/offer3.jpg";
 import offer4 from "../images/offer4.jpg";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
+  const navigate = useNavigate();
+
+  const token = sessionStorage.getItem("token");
+
+  if (!token) {
+    // Redirect to the login page or home page
+    navigate("/login");
+  }
+
   return (
     <div>
       <Container>
@@ -14,7 +24,7 @@ function Home() {
           <h1 id="homeHead">We Provide High Solutions for Your Health</h1>
           <img src={med} alt="" id="homeMedImg" />
         </Row>
-        <hr class="hr" />
+        <hr className="hr" />
         <br />
         <Row>
           <h2 style={{ marginBottom: "10px" }}>Special offer</h2>
@@ -22,7 +32,7 @@ function Home() {
         <Row>
           <img src={offer1} alt="" id="homeMedImg" />
         </Row>
-        <hr class="hr" />
+        <hr className="hr" />
         <br />
         <Row>
           <h2 style={{ marginBottom: "10px" }}>Offers just for you</h2>
@@ -30,7 +40,7 @@ function Home() {
         <Row>
           <img src={offer2} alt="" id="homeMedImg" />
         </Row>
-        <hr class="hr" />
+        <hr className="hr" />
         <br />
         <Row>
           <h2 style={{ marginBottom: "10px" }}>
@@ -46,7 +56,7 @@ function Home() {
           </Col>
         </Row>
         <Row>
-          <h3>App coming soon...</h3>
+          <h2 style={{ marginBottom: "20px", textAlign: "center" }}>Mobile App coming soon...</h2>
         </Row>
       </Container>
     </div>

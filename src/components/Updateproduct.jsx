@@ -1,8 +1,17 @@
 import React, { useState } from "react";
 import MedicineDataService from "../services/medicine.service";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Updateproduct = () => {
+  const navigate = useNavigate();
+
+  const token = sessionStorage.getItem("token");
+
+  if (!token) {
+    // Redirect to the login page or home page
+    navigate("/login");
+  }
+  
   const location = useLocation();
   const { medId, medName, medCategory, medPrice } = location.state;
   // console.log(medId);

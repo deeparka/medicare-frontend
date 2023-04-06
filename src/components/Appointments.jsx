@@ -2,12 +2,21 @@ import React, { useState } from "react";
 import { Col, Container, Row, Modal, Button } from "react-bootstrap";
 import medimg2 from "../images/medicare10.jpg";
 import AppointmentsDataService from "../services/appointments.service";
+import { useNavigate } from "react-router-dom";
 
 function Appointments() {
+  const navigate = useNavigate();
+
+  const token = sessionStorage.getItem("token");
 
   const [category, setCategory] = useState("");
   const [show, setShow] = useState(false);
   const [appointments, setAppointments] = useState([]);
+
+  if (!token) {
+    // Redirect to the login page
+    navigate("/login");
+  }
 
   AppointmentsDataService.getAll().then((response) => {
     setAppointments(response.data);
@@ -17,13 +26,15 @@ function Appointments() {
   const handleBook = (category) => {
     setCategory(category);
     setShow(true);
-  }
+  };
 
   const handleClose = () => setShow(false);
 
   return (
     <Container style={{ marginTop: "30px", marginBottom: "30px" }}>
-      <h1 style={{ textAlign: "center", marginBottom: "25px" }}>Appointments available</h1>
+      <h1 style={{ textAlign: "center", marginBottom: "25px" }}>
+        Appointments available
+      </h1>
       <Row className="gy-5">
         {appointments.map((apt) => (
           <Col>
@@ -33,7 +44,10 @@ function Appointments() {
                 <h5 class="card-title">{apt.category}</h5>
                 <p className="card-text">{apt.availability}</p>
                 <p className="card-text">₹{apt.price}</p>
-                <button onClick={() => handleBook(apt.category)} class="btn btn-primary">
+                <button
+                  onClick={() => handleBook(apt.category)}
+                  class="btn btn-primary"
+                >
                   Book appointment
                 </button>
               </div>
@@ -47,7 +61,9 @@ function Appointments() {
         <Modal.Header closeButton>
           <Modal.Title>Appointment booked</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Woohoo! your appointment is booked for {category}</Modal.Body>
+        <Modal.Body>
+          Woohoo! your appointment is booked for {category}
+        </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close

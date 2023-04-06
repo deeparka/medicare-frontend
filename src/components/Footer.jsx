@@ -11,15 +11,12 @@ export default function Footer() {
     <MDBFooter className="text-center" color="white" bgColor="dark">
       <MDBContainer className="p-4">
         <h2 className="mb-4">
-          MediCare - The Medicine Application
+          MediCare - An All-In-One Health Problem Solution
         </h2>
 
         <section className="mb-4">
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt
-            distinctio earum repellat quaerat voluptatibus placeat nam, commodi
-            optio pariatur est quia magnam eum harum corrupti dicta, aliquam
-            sequi voluptate quas.
+          Medicare is a company that supplies medicines and a couple of other healthcare essentials at an affordable price.
           </p>
         </section>
 

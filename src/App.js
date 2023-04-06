@@ -6,7 +6,7 @@ import NavBar from "./components/NavBar";
 import Contact from "./components/Contact";
 import Products from "./components/Products";
 import Appointments from "./components/Appointments";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Home from "./components/Home";
 import Footer from "./components/Footer";
 import Cart from "./components/Cart";
@@ -21,7 +21,6 @@ function App() {
   return (
     <div>
       <NavBar />
-      <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/login" element={<LogIn />} />
@@ -37,7 +36,6 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/cares" element={<Cares />} />
         </Routes>
-      </BrowserRouter>
       <Footer />
     </div>
   );

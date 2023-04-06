@@ -1,16 +1,25 @@
-import React, { useState } from 'react'
-import WellnessDataService from "../services/wellness.service"
+import React, { useState } from "react";
+import WellnessDataService from "../services/wellness.service";
 import wellnessimg from "../images/wellness.jpg";
-import { Col, Container, Row } from 'react-bootstrap';
+import { Col, Container, Row } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 const Wellness = () => {
+  const navigate = useNavigate();
 
-    const [wellness, setWellness] = useState([]);
+  const token = sessionStorage.getItem("token");
 
-    WellnessDataService.getAll().then(response => {
-        setWellness(response.data);
-        console.log(response.data);
-    })
+  if (!token) {
+    // Redirect to the login page
+    navigate("/login");
+  }
+
+  const [wellness, setWellness] = useState([]);
+
+  WellnessDataService.getAll().then((response) => {
+    setWellness(response.data);
+    console.log(response.data);
+  });
 
   return (
     <Container style={{ marginTop: "30px", marginBottom: "30px" }}>
@@ -27,17 +36,14 @@ const Wellness = () => {
                 <h5 class="card-title">{well.name}</h5>
                 <p className="card-text">{well.company}</p>
                 <p className="card-text">₹{well.price}</p>
-                <button class="btn btn-primary">
-                  Add to cart
-                </button>
+                <button class="btn btn-primary">Add to cart</button>
               </div>
             </div>
           </Col>
         ))}
       </Row>
+    </Container>
+  );
+};
 
-      </Container>
-  )
-}
-
-export default Wellness
+export default Wellness;
