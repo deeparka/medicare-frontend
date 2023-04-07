@@ -80,13 +80,6 @@ function LogIn() {
           <h4>
             Go to <Link to="/">Homepage</Link>
           </h4>
-          {setTimeout(() => {
-            return (
-              <Spinner animation="border" role="status">
-                <span className="visually-hidden">Loading...</span>
-              </Spinner>
-            );
-          }, 3000)}
         </div>
       ) : (
         <form className="Auth-form" onSubmit={handleLogin}>

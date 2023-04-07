@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import AppContext from "../context/AppContext";
 import { useNavigate } from "react-router-dom";
 import { Button, Container, Table } from "react-bootstrap";
+import CartItem from "./CartItem";
 
 function Cart() {
   const getValue = useContext(AppContext);
@@ -40,44 +41,45 @@ function Cart() {
             Cart items
           </h1>
           <Table id="productTable" striped bordered hover>
-            <thead>
+            {/* <thead>
               <tr>
                 <th>Sl. No.</th>
                 <th>Medicine Name</th>
                 <th>Quantity</th>
                 <th>Price per unit</th>
               </tr>
-            </thead>
+            </thead> */}
             <tbody>
               {getValue.cartItems.map((item, index) => (
-                <tr key={item.id}>
-                  <td>{index + 1}</td>
-                  <td>{item.name}</td>
-                  <td>
-                    <div className="form-group">
-                      <input
-                        type="number"
-                        className="form-control mt-1"
-                        placeholder="Quantity"
-                        onChange={handleQuantityChange}
-                        name="quantity"
-                        required
-                      />
-                    </div>
-                  </td>
-                  <td>{item.price}</td>
-                  <td>
-                    <Button
-                      className="btn-primary"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        getValue.removeItemsFromCart(item);
-                      }}
-                    >
-                      Remove
-                    </Button>
-                  </td>
-                </tr>
+                // <tr key={item.id}>
+                //   <td>{index + 1}</td>
+                //   <td>{item.name}</td>
+                //   <td>
+                //     <div className="form-group">
+                //       <input
+                //         type="number"
+                //         className="form-control mt-1"
+                //         placeholder="Quantity"
+                //         onChange={handleQuantityChange}
+                //         name="quantity"
+                //         required
+                //       />
+                //     </div>
+                //   </td>
+                //   <td>{item.price}</td>
+                //   <td>
+                //     <Button
+                //       className="btn-primary"
+                //       onClick={(e) => {
+                //         e.preventDefault();
+                //         getValue.removeItemsFromCart(item);
+                //       }}
+                //     >
+                //       Remove
+                //     </Button>
+                //   </td>
+                // </tr>
+                <CartItem item={item} index={index} />
               ))}
             </tbody>
           </Table>

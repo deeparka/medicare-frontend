@@ -7,7 +7,7 @@ const Cares = () => {
   const { name } = location.state;
 
   return (
-    <Container style={{ marginTop: "30px", marginBottom: "30px" }}>
+    <Container style={{ marginTop: "90px", marginBottom: "30px" }}>
       <h1 style={{ textAlign: "center", marginBottom: "25px" }}>{name}</h1>
       <p style={{ textAlign: "center" }}>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod

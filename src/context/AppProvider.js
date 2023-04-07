@@ -13,10 +13,12 @@ function AppProvider({ children }) {
     // console.log(cartItems);
   }
 
-  function removeItemsFromCart(item) {
+  function removeItemsFromCart(item, quantity) {
     setCartItems((prevCartItems) => {
       return prevCartItems.filter((prevItem) => prevItem.id !== item.id);
     });
+
+    setTotalPrice(totalPrice - (item.price * quantity))
   }
 
   function calculateTotalPrice(price) {
