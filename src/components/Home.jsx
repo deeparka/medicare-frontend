@@ -19,12 +19,9 @@ function Home() {
 
   return (
     <div>
-      <Container style={{ marginTop: "90px" }}>
-        <Row>
-          <h1 id="homeHead">We Provide High Solutions for Your Health</h1>
-          <img src={med} alt="" id="homeMedImg" />
-        </Row>
-        <hr className="hr" />
+      <h1 id="homeHead">We Provide High Solutions for Your Health</h1>
+      <img src={med} alt="" id="homeMedImg" />
+      <Container style={{ marginTop: "0px" }}>
         <br />
         <Row>
           <h2 style={{ marginBottom: "10px" }}>Special offer</h2>

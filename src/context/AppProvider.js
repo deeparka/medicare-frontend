@@ -10,7 +10,7 @@ function AppProvider({ children }) {
 
   function addItemsToCart(item) {
     setCartItems([...cartItems, item]);
-    console.log(cartItems);
+    // console.log(cartItems);
   }
 
   function removeItemsFromCart(item) {
@@ -26,8 +26,8 @@ function AppProvider({ children }) {
 
   function defineUserType(user) {
     setUserType(user);
-    console.log(user)
-    console.log(userType);
+    // console.log(user);
+    // console.log(userType);
   }
 
   function logOut() {
@@ -44,7 +44,7 @@ function AppProvider({ children }) {
         calculateTotalPrice,
         userType,
         defineUserType,
-        logOut
+        logOut,
       }}
     >
       {children}

@@ -35,7 +35,7 @@ function SignUp() {
 
     const { name, value } = event.target;
     setUser({ ...user, [name]: value });
-    console.log(user);
+    // console.log(user);
   };
 
   function handleSignUp(event) {

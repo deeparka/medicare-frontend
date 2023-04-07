@@ -27,7 +27,7 @@ function Contact() {
     const { name, value } = event.target;
     setMessageDetails({ ...messageDetails, [name]: value });
 
-    console.log(messageDetails);
+    // console.log(messageDetails);
   }
 
   function handleSubmit(event) {

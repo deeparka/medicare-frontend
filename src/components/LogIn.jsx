@@ -2,12 +2,13 @@ import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import UserDataService from "../services/user.service";
 import AppContext from "../context/AppContext";
+import { Spinner } from "react-bootstrap";
 
 function LogIn() {
   const useValue = useContext(AppContext);
 
-  const [firstName, setFirstName] = useState("")
-  const [lastName, setLastName] = useState("")
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
 
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState(false);
@@ -71,12 +72,21 @@ function LogIn() {
   return (
     <div className="Auth-form-container">
       {submitted ? (
-        <div>
-          <h2 style={{ textAlign: "center" }}>Log in successful</h2>
-          <h3 style={{ textAlign: "center" }}>Welcome {firstName} {lastName}</h3>
-          <h4 style={{ textAlign: "center" }}>
+        <div style={{ textAlign: "center" }}>
+          <h2>Log in successful</h2>
+          <h3>
+            Welcome {firstName} {lastName}
+          </h3>
+          <h4>
             Go to <Link to="/">Homepage</Link>
           </h4>
+          {setTimeout(() => {
+            return (
+              <Spinner animation="border" role="status">
+                <span className="visually-hidden">Loading...</span>
+              </Spinner>
+            );
+          }, 3000)}
         </div>
       ) : (
         <form className="Auth-form" onSubmit={handleLogin}>

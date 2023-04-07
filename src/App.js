@@ -16,6 +16,7 @@ import Healthconcern from "./components/Healthconcern";
 import Wellness from "./components/Wellness";
 import Addproduct from "./components/Addproduct";
 import Updateproduct from "./components/Updateproduct";
+import ProductSearch from "./components/ProductSearch";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           <Route path="/wellness" element={<Wellness />} />
           <Route path="/healthconcern" element={<Healthconcern />} />
           <Route path="/products" element={<Products />} />
+          <Route path="/productsearch" element={<ProductSearch />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/cares" element={<Cares />} />

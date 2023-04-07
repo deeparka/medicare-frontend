@@ -8,7 +8,7 @@ const Updateproduct = () => {
   const token = sessionStorage.getItem("token");
 
   if (!token) {
-    // Redirect to the login page or home page
+    // Redirect to the login page
     navigate("/login");
   }
   

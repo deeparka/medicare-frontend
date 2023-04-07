@@ -1,5 +1,5 @@
-import { useContext } from "react";
-import { NavDropdown } from "react-bootstrap";
+import { useContext, useState } from "react";
+import { Button, Form, NavDropdown } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -11,16 +11,27 @@ function NavBar() {
   const navigate = useNavigate();
   const getValue = useContext(AppContext);
 
+  const [searchElement, setSearchElement] = useState("");
+
   const handleLogout = () => {
     getValue.logOut();
     sessionStorage.removeItem("token");
-    // Redirect to the login page or home page
+    // Redirect to the login page
     navigate("/login");
+  };
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    navigate("/productsearch", {
+      state: {
+        name: searchElement,
+      },
+    });
   };
 
   return (
     <>
-      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" fixed="top" >
+      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" fixed="top">
         <Container>
           <Navbar.Brand>MediCare</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -66,6 +77,22 @@ function NavBar() {
                 </Link>
               ) : null}
             </Nav>
+
+            <Form className="d-flex">
+              <Form.Control
+                type="search"
+                placeholder="Search"
+                className="me-2"
+                aria-label="Search"
+                onChange={(e) => {
+                  setSearchElement(e.target.value);
+                  console.log(e.target.value);
+                }}
+              />
+              <Button variant="outline-primary" onClick={handleSearch}>
+                Search
+              </Button>
+            </Form>
 
             <Nav>
               <Link to="/signup" className="nav-links-right">

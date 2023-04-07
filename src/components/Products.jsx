@@ -10,6 +10,7 @@ function Products() {
 
   const useValue = useContext(AppContext);
 
+  const [defaultMedicines, setDefaultMedicines] = useState(false);
   const [medicines, setMedicines] = useState([]);
 
   const [nameSort, setNameSort] = useState(false);
@@ -30,6 +31,7 @@ function Products() {
 
   useEffect(() => {
     MedicineDataService.getAll().then((response) => {
+      setDefaultMedicines(true);
       setMedicines(response.data);
       // console.log(response.data);
     }, []);
@@ -62,6 +64,9 @@ function Products() {
       setMedicinesNameSort(response.data);
     });
     setNameSort(true);
+    setCategorySort(false);
+    setPriceSort(false);
+    setDefaultMedicines(false);
   };
 
   const handleCategorySort = (e) => {
@@ -70,6 +75,9 @@ function Products() {
       setMedicinesCategorySort(response.data);
     });
     setCategorySort(true);
+    setNameSort(false);
+    setPriceSort(false);
+    setDefaultMedicines(false);
   };
 
   const handlePriceSort = (e) => {
@@ -78,10 +86,13 @@ function Products() {
       setMedicinesPriceSort(response.data);
     });
     setPriceSort(true);
+    setCategorySort(false);
+    setNameSort(false);
+    setDefaultMedicines(false);
   };
 
   return (
-    <Container style={{ marginTop: "90px" ,marginBottom: "50px" }}>
+    <Container style={{ marginTop: "90px", marginBottom: "50px" }}>
       <h2 id="productHeading">
         Here are all the medicines available on our site
       </h2>
@@ -127,6 +138,7 @@ function Products() {
           {!nameSort &&
             !categorySort &&
             !priceSort &&
+            defaultMedicines &&
             medicines.map((med, index) => (
               <tr key={med.id}>
                 <td>{index + 1}</td>

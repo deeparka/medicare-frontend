@@ -17,7 +17,7 @@ function Cart() {
     navigate("/login");
   }
 
-  console.log(getValue.cartItems);
+  // console.log(getValue.cartItems);
 
   function handleQuantityChange(event) {
     const { value } = event.target;

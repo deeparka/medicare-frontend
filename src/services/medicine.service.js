@@ -17,6 +17,10 @@ class MedicineDataService {
     return http.get("/medicines/price");
   }
 
+  getMedicineByName(name) {
+    return http.get(`/medicine/${name}`);
+  }
+
   create(data) {
     return http.post("/medicine/add", data);
   }

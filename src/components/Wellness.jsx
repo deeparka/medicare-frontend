@@ -43,14 +43,14 @@ const Wellness = () => {
 
       <Row className="gy-5">
         {wellness.map((well) => (
-          <Col>
-            <div class="card" style={{ width: "20rem" }} key={well.id}>
-              <img src={wellnessimg} class="card-img-top" alt="..." />
-              <div class="card-body">
-                <h5 class="card-title">{well.name}</h5>
+          <Col key={well.id}>
+            <div className="card" style={{ width: "20rem" }} >
+              <img src={wellnessimg} className="card-img-top" alt="..." />
+              <div className="card-body">
+                <h5 className="card-title">{well.name}</h5>
                 <p className="card-text">{well.company}</p>
                 <p className="card-text">₹{well.price}</p>
-                <button class="btn btn-primary" onClick={(e) => {
+                <button className="btn btn-primary" onClick={(e) => {
                   e.preventDefault();
                   handleAddToCart(well);
                 }}>Add to cart</button>
