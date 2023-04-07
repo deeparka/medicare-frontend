@@ -33,7 +33,7 @@ const ProductSearch = () => {
   return (
     <div>
       <Container style={{ marginTop: "90px", marginBottom: "50px" }}>
-        {!count && (
+        {count && (
           <Table id="productTable" striped bordered hover>
             <thead>
               <tr>
@@ -78,7 +78,7 @@ const ProductSearch = () => {
             </tbody>
           </Table>
         )}
-        {count && (
+        {!count && (
           <div id="productNotFound">
             <h2>Product not found</h2>
             <h4>
