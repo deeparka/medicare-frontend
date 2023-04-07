@@ -8,6 +8,8 @@ function AppProvider({ children }) {
 
   const [userType, setUserType] = useState("");
 
+  let newPrice = 0;
+
   function addItemsToCart(item) {
     setCartItems([...cartItems, item]);
     // console.log(cartItems);
@@ -22,7 +24,7 @@ function AppProvider({ children }) {
   }
 
   function calculateTotalPrice(price) {
-    let newPrice = totalPrice + price;
+    newPrice = totalPrice + price;
     setTotalPrice(newPrice);
   }
 

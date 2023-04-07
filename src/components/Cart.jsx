@@ -9,8 +9,6 @@ function Cart() {
 
   const navigate = useNavigate();
 
-  const [quantity, setQuantity] = useState(0);
-
   const token = sessionStorage.getItem("token");
 
   if (!token) {
@@ -18,16 +16,8 @@ function Cart() {
     navigate("/login");
   }
 
-  // console.log(getValue.cartItems);
-
-  function handleQuantityChange(event) {
-    const { value } = event.target;
-
-    setQuantity(value);
-  }
-
   return (
-    <Container style={{ marginTop: "90px"}}>
+    <Container style={{ marginTop: "90px" }}>
       {getValue.cartItems.length <= 0 ? (
         <h2 id="cart-no-item-heading">No items in cart</h2>
       ) : (
@@ -41,44 +31,8 @@ function Cart() {
             Cart items
           </h1>
           <Table id="productTable" striped bordered hover>
-            {/* <thead>
-              <tr>
-                <th>Sl. No.</th>
-                <th>Medicine Name</th>
-                <th>Quantity</th>
-                <th>Price per unit</th>
-              </tr>
-            </thead> */}
             <tbody>
               {getValue.cartItems.map((item, index) => (
-                // <tr key={item.id}>
-                //   <td>{index + 1}</td>
-                //   <td>{item.name}</td>
-                //   <td>
-                //     <div className="form-group">
-                //       <input
-                //         type="number"
-                //         className="form-control mt-1"
-                //         placeholder="Quantity"
-                //         onChange={handleQuantityChange}
-                //         name="quantity"
-                //         required
-                //       />
-                //     </div>
-                //   </td>
-                //   <td>{item.price}</td>
-                //   <td>
-                //     <Button
-                //       className="btn-primary"
-                //       onClick={(e) => {
-                //         e.preventDefault();
-                //         getValue.removeItemsFromCart(item);
-                //       }}
-                //     >
-                //       Remove
-                //     </Button>
-                //   </td>
-                // </tr>
                 <CartItem item={item} index={index} />
               ))}
             </tbody>
@@ -102,7 +56,15 @@ function Cart() {
         >
           Previous
         </Button>
-        <Button className="btn-success">Checkout</Button>
+        <Button
+          className="btn-success"
+          onClick={(e) => {
+            e.preventDefault();
+            alert("Your order has been placed successfully..🎊");
+          }}
+        >
+          Checkout
+        </Button>
       </div>
     </Container>
   );
