@@ -8,9 +8,7 @@ function Appointments() {
   const navigate = useNavigate();
 
   const token = sessionStorage.getItem("token");
-
-  const [category, setCategory] = useState("");
-  const [show, setShow] = useState(false);
+  
   const [appointments, setAppointments] = useState([]);
 
   if (!token) {
@@ -24,11 +22,13 @@ function Appointments() {
   });
 
   const handleBook = (category) => {
-    setCategory(category);
-    setShow(true);
+    console.log(category)
+    navigate("/appointmentform", {
+      state: {
+        category: category,
+      },
+    });
   };
-
-  const handleClose = () => setShow(false);
 
   return (
     <Container style={{ marginTop: "90px", marginBottom: "30px" }}>
@@ -37,16 +37,16 @@ function Appointments() {
       </h1>
       <Row className="gy-5">
         {appointments.map((apt) => (
-          <Col>
-            <div class="card" style={{ width: "20rem" }} key={apt.id}>
-              <img src={medimg} class="card-img-top" alt="..." />
-              <div class="card-body">
-                <h5 class="card-title">{apt.category}</h5>
+          <Col key={apt.id}>
+            <div className="card" style={{ width: "20rem" }}>
+              <img src={medimg} className="card-img-top" alt="..." />
+              <div className="card-body">
+                <h5 className="card-title">{apt.category}</h5>
                 <p className="card-text">{apt.availability}</p>
                 <p className="card-text">₹{apt.price}</p>
                 <button
                   onClick={() => handleBook(apt.category)}
-                  class="btn btn-primary"
+                  className="btn btn-primary"
                 >
                   Book appointment
                 </button>
@@ -55,21 +55,6 @@ function Appointments() {
           </Col>
         ))}
       </Row>
-
-      {/* If Book appointment is clicked then this modal will pop-up */}
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Appointment booked</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          Woohoo! your appointment is booked for {category}
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-        </Modal.Footer>
-      </Modal>
     </Container>
   );
 }

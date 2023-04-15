@@ -27,6 +27,7 @@ function SignUp() {
   }, []);
 
   const handleFormChange = (event) => {
+    setEmailError(false);
     allUsers.map((singleUser) => {
       if (singleUser.email === user.email) {
         setEmailError(true);

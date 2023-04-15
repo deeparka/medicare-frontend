@@ -5,7 +5,8 @@ import SignUp from "./components/SignUp";
 import NavBar from "./components/NavBar";
 import Contact from "./components/Contact";
 import Products from "./components/Products";
-import Appointments from "./components/Appointments";
+import Appointments from "./components/Appointment";
+import AppointmentForm from "./components/AppointmentForm";
 import { Route, Routes } from "react-router-dom";
 import Home from "./components/Home";
 import Footer from "./components/Footer";
@@ -29,6 +30,7 @@ function App() {
           <Route path="/addproduct" element={<Addproduct />} />
           <Route path="/updateproduct" element={<Updateproduct />} />
           <Route path="/appointments" element={<Appointments />} />
+          <Route path="/appointmentform" element={<AppointmentForm />} />
           <Route path="/healthcaretest" element={<Healthcaretest />} />
           <Route path="/wellness" element={<Wellness />} />
           <Route path="/healthconcern" element={<Healthconcern />} />

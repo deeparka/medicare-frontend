@@ -46,6 +46,8 @@ function LogIn() {
   }
 
   function handleLogin(event) {
+    setEmailError(false);
+    setPassword(false);
     event.preventDefault();
 
     if (email !== credentials.email) {
