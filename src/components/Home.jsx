@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import med from "../images/medicare.jpg";
 import offer1 from "../images/offer1.jpg";
@@ -12,10 +12,12 @@ function Home() {
 
   const token = sessionStorage.getItem("token");
 
-  if (!token) {
-    // Redirect to the login page or home page
-    navigate("/login");
-  }
+  useEffect(() => {
+    if (!token) {
+      // Redirect to the login page
+      navigate("/login");
+    }
+  }, [navigate, token]);
 
   return (
     <div>

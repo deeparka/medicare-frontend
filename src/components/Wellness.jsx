@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import WellnessDataService from "../services/wellness.service";
 import wellnessimg from "../images/wellness.jpg";
 import { Col, Container, Row } from "react-bootstrap";
@@ -12,10 +12,12 @@ const Wellness = () => {
 
   const token = sessionStorage.getItem("token");
 
-  if (!token) {
-    // Redirect to the login page
-    navigate("/login");
-  }
+  useEffect(() => {
+    if (!token) {
+      // Redirect to the login page
+      navigate("/login");
+    }
+  }, [navigate, token]);
 
   const [wellness, setWellness] = useState([]);
 

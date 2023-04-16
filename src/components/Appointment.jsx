@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Col, Container, Row, Modal, Button } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import { Col, Container, Row } from "react-bootstrap";
 import medimg from "../images/medicare-appointment.jpg";
 import AppointmentsDataService from "../services/appointments.service";
 import { useNavigate } from "react-router-dom";
@@ -11,10 +11,12 @@ function Appointments() {
   
   const [appointments, setAppointments] = useState([]);
 
-  if (!token) {
-    // Redirect to the login page
-    navigate("/login");
-  }
+  useEffect(() => {
+    if (!token) {
+      // Redirect to the login page
+      navigate("/login");
+    }
+  }, [navigate, token]);
 
   AppointmentsDataService.getAll().then((response) => {
     setAppointments(response.data);

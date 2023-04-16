@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ContactDataService from "../services/contact.service";
 
@@ -18,16 +18,16 @@ function Contact() {
 
   const token = sessionStorage.getItem("token");
 
-  if (!token) {
-    // Redirect to the login page
-    navigate("/login");
-  }
+  useEffect(() => {
+    if (!token) {
+      // Redirect to the login page
+      navigate("/login");
+    }
+  }, [navigate, token]);
 
   function handleFormChange(event) {
     const { name, value } = event.target;
     setMessageDetails({ ...messageDetails, [name]: value });
-
-    // console.log(messageDetails);
   }
 
   function handleSubmit(event) {

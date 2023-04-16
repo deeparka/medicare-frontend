@@ -5,7 +5,6 @@ import { useLocation } from "react-router-dom";
 const AppointmentForm = () => {
   const location = useLocation();
   const { category } = location.state;
-  console.log(category)
 
   const [show, setShow] = useState(false);
 
@@ -33,7 +32,7 @@ const AppointmentForm = () => {
     <div className="Auth-form-container">
       <form className="Auth-form" onSubmit={handleSubmit}>
         <div className="Auth-form-content">
-          <h3 className="Auth-form-title">Contact us</h3>
+          <h3 className="Auth-form-title">Schedule Appointment</h3>
           <div className="form-group mt-3">
             <label>Full Name*</label>
             <input
@@ -61,7 +60,7 @@ const AppointmentForm = () => {
             <input
               type="tel"
               className="form-control mt-1"
-              placeholder="Enter your message"
+              placeholder="Enter your number"
               onChange={handleFormChange}
               required
               name="phone"

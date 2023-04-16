@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import MedicineDataService from "../services/medicine.service";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Addproduct = () => {
   const initialMedicineState = {
@@ -10,17 +10,9 @@ const Addproduct = () => {
     price: 0,
   };
 
-  const navigate = useNavigate();
-
-  const token = sessionStorage.getItem("token");
-
   const [medicine, setMedicine] = useState(initialMedicineState);
   const [submitted, setSubmitted] = useState(false);
 
-  if (!token) {
-    // Redirect to the login page
-    navigate("/login");
-  }
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;

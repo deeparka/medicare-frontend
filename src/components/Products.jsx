@@ -24,10 +24,12 @@ function Products() {
 
   const token = sessionStorage.getItem("token");
 
-  if (!token) {
-    // Redirect to the login page
-    navigate("/login");
-  }
+  useEffect(() => {
+    if (!token) {
+      // Redirect to the login page
+      navigate("/login");
+    }
+  }, [navigate, token]);
 
   useEffect(() => {
     MedicineDataService.getAll().then((response) => {

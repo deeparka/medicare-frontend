@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import AppContext from "../context/AppContext";
 import { useNavigate } from "react-router-dom";
 import { Button, Container, Table } from "react-bootstrap";
@@ -11,10 +11,12 @@ function Cart() {
 
   const token = sessionStorage.getItem("token");
 
-  if (!token) {
-    // Redirect to the login page
-    navigate("/login");
-  }
+  useEffect(() => {
+    if (!token) {
+      // Redirect to the login page
+      navigate("/login");
+    }
+  }, [navigate, token]);
 
   return (
     <Container style={{ marginTop: "90px" }}>
@@ -56,15 +58,22 @@ function Cart() {
         >
           Previous
         </Button>
-        <Button
-          className="btn-success"
-          onClick={(e) => {
-            e.preventDefault();
-            alert("Your order has been placed successfully..🎊");
-          }}
-        >
-          Checkout
-        </Button>
+        {/* Check Out */}
+        {getValue.totalPrice === 0 ? (
+          <Button disabled className="btn-success">
+            Checkout
+          </Button>
+        ) : (
+          <Button
+            className="btn-success"
+            onClick={(e) => {
+              e.preventDefault();
+              navigate("/address");
+            }}
+          >
+            Checkout
+          </Button>
+        )}
       </div>
     </Container>
   );

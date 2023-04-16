@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Container, Card, Row } from "react-bootstrap";
 import lung from "../images/lung.jpg";
 import weight from "../images/weight.jpg";
@@ -12,10 +12,12 @@ const Healthconcern = () => {
 
   const token = sessionStorage.getItem("token");
 
-  if (!token) {
-    // Redirect to the login page
-    navigate("/login");
-  }
+  useEffect(() => {
+    if (!token) {
+      // Redirect to the login page
+      navigate("/login");
+    }
+  }, [navigate, token]);
 
   const handleCares = (name) => {
     navigate("/cares", {

@@ -18,6 +18,7 @@ import Wellness from "./components/Wellness";
 import Addproduct from "./components/Addproduct";
 import Updateproduct from "./components/Updateproduct";
 import ProductSearch from "./components/ProductSearch";
+import Address from "./components/Address";
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
           <Route path="/productsearch" element={<ProductSearch />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/address" element={<Address />} />
           <Route path="/cares" element={<Cares />} />
         </Routes>
       <Footer />
