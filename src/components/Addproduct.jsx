@@ -7,12 +7,11 @@ const Addproduct = () => {
     id: null,
     name: "",
     category: "",
-    price: 0,
+    price: null,
   };
 
   const [medicine, setMedicine] = useState(initialMedicineState);
   const [submitted, setSubmitted] = useState(false);
-
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -49,7 +48,7 @@ const Addproduct = () => {
         <div>
           <h2>Product added successfully</h2>
           <h4 style={{ textAlign: "center" }}>
-            <Link to="/login">Add another Product</Link>
+            Go to <Link to="/products">products</Link>
           </h4>
         </div>
       ) : (

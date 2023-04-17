@@ -1,11 +1,11 @@
-/* Form styling for LogIn, SignUp, Contact, Manage page */
+/* Form styling for LogIn, SignUp, Contact, Manage etc */
 .Auth-form-container {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100vw;
-  height: 100vh;
-  margin-top: 90px;
+  height: 70%;
+  margin-top: 120px;
   margin-bottom: 50px;
 }
 

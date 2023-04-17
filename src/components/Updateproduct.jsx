@@ -68,7 +68,7 @@ const Updateproduct = () => {
             </div>
 
             <div className="form-group mt-3">
-              <label>Medicine Name</label>
+              <label>Medicine Name*</label>
               <input
                 type="text"
                 className="form-control mt-1"
@@ -79,7 +79,7 @@ const Updateproduct = () => {
             </div>
 
             <div className="form-group mt-3">
-              <label>Price</label>
+              <label>Price*</label>
               <input
                 type="number"
                 className="form-control mt-1"
@@ -90,7 +90,7 @@ const Updateproduct = () => {
             </div>
 
             <div className="form-group mt-3">
-              <label>Category</label>
+              <label>Category*</label>
               <select
                 onChange={handleInputChange}
                 className="form-select mt-1"
